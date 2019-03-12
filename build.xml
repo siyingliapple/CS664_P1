@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<project xmlns:module="antlib:org.uncommons.antlib"
+         name="poker"
+         default="dist"
+         basedir=".">
+
+  <description>Ant build file for the poker project.</description>
+
+  <taskdef uri="antlib:org.uncommons.antlib"
+           resource="org/uncommons/antlib/antlib.xml"
+           classpath="lib/compiletime/uncommons-antlib-0.2.5.jar"/>
+
+  <!-- Uncommons Antlib 0.2.5 does not provide a default for this. -->
+  <property name="dist.dir" value="dist" />
+
+  <target name="clean">
+    <module:clean module="experiments" />
+    <module:clean module="game" />
+    <module:clean module="utilities" />
+    <delete dir="${docs.dir}" />
+    <delete dir="${temp.dir}" />
+    <delete dir="${dist.dir}" />
+  </target>
+
+
+  <target name="utilities">
+    <module:compile module="utilities" />
+    <module:jar module="utilities" />
+  </target>
+
+
+  <target name="game" depends="utilities">
+    <module:compile module="game" />
+    <module:jar module="game" classpath="utilities.jar uncommons-maths-1.2.1.jar" />
+  </target>
+
+
+  <target name="experiments" depends="game">
+    <module:compile module="experiments" />
+    <module:jar module="experiments" classpath="game.jar uncommons-maths-1.2.1.jar watchmaker-framework-0.7.2pre.jar google-collect-1.0.jar watchmaker-swing-0.7.2pre.jar jfreechart-1.0.13.jar jcommon-1.0.16.jar"/>
+  </target>
+
+
+  <target name="dist" depends="clean, utilities, game, experiments">
+    <module:dist />
+  </target>
+
+  <target name="test" depends="dist">
+    <module:test suites="etc/testng/*.xml" />
+  </target>
+
+</project>

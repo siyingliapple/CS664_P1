@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="runtime">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/experiments/lib/runtime/jcommon-1.0.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/experiments/lib/runtime/jfreechart-1.0.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/experiments/lib/runtime/google-collect-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/experiments/lib/runtime/watchmaker-swing-0.7.2pre.jar!/" />
+      <root url="jar://$PROJECT_DIR$/experiments/lib/runtime/watchmaker-framework-0.7.2pre.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
